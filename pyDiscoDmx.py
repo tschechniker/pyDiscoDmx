@@ -6,12 +6,25 @@ from btrack import track_beats
 import time
 from queue import Queue
 from threading import Thread
+import configparser
+import os
+from chase import chase
 
 tmp = False
+chases = []
+currentChase = None
 
 dmx = uDMXController()
-fixture = dmx.add_fixture(Dimmer, name="My_First_Dimmer")
-fixture2 = dmx.add_fixture(Dimmer, name="My_First_Dimmer", start_channel=4)
+dmx.json.load_config('fixtures.json')
+
+def loadChases():
+    for filename in os.listdir("chases"):
+        if filename.endswith(".chase"):
+            config = configparser.ConfigParser()
+            config.read(os.path.join("chases", filename))
+            chases.append(chase(config))
+        else:
+            continue
 
 def beatDetection(out_q):
     with track_beats() as tracker:
@@ -23,18 +36,16 @@ def beatDetection(out_q):
 
 def beatHandler(in_q):
     global tmp
+    global currentChase
+    global chases
+    global dmx
     while True:
         data = in_q.get()
-        print(data)
-        if tmp:
-            fixture.on()
-            fixture2.off()
-        else:
-            fixture.off()
-            fixture2.on()
-        tmp = not tmp
+        if currentChase == None:
+            currentChase = chases[0]
+        currentChase.nextStep(dmx, data)
 
-
+loadChases()
 q = Queue()
 t1 = Thread(target = beatHandler, args =(q, ))
 t2 = Thread(target = beatDetection, args =(q, ))

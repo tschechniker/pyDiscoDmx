@@ -1,0 +1,20 @@
+[
+    {
+        "type": "Generic.Dimmer",
+        "args": [],
+        "name": "Scanner",
+        "start_channel": 1
+    },
+    {
+        "type": "Generic.Dimmer",
+        "args": [],
+        "name": "Fenster",
+        "start_channel": 4
+    },
+    {
+        "type": "Generic.Dimmer",
+        "args": [],
+        "name": "Blaulicht",
+        "start_channel": 3
+    }
+]
