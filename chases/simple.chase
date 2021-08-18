@@ -1,6 +1,7 @@
 [META]
 bpmMin=0
 bpmMax=1000
+dimTime=100
 
 [1]
 Scanner=255
