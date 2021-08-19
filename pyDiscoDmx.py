@@ -26,7 +26,7 @@ if bool(globalConfig['dmx']['debug']):
     debug.start()
 
 # @ToDo: Make this dynamic
-chaseHandler.start("simple")
+chaseHandler.start("color")
 
 dmx.sleep_till_interrupt()
 

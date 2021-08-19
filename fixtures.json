@@ -17,4 +17,12 @@
         "name": "Blaulicht",
         "start_channel": 3
     }
+    ,
+    {
+        "type": "Stairville.Quad_Par_Profile",
+        "args": [],
+        "name": "LichtBar",
+        "start_channel": 10,
+        "mode": 4
+    }
 ]
