@@ -2,7 +2,7 @@ from btrack import track_beats
 from PyDMXControl import Colors
 import time
 import random
-from BeatDetectionThread import bpmSignal
+from .BeatDetectionThread import bpmSignal
 
 class Chase():
     def __init__(self, config, dmx):

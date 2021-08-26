@@ -1,4 +1,4 @@
-from Chase import Chase
+from .Chase import Chase
 import os
 import configparser
 

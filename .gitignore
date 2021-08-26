@@ -1,1 +1,4 @@
 __pycache__/
+.pypirc
+pyDiscoDmx.egg-info
+build

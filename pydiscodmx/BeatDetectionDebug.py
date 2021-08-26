@@ -1,7 +1,4 @@
-from btrack import track_beats
-from BeatDetectionThread import bpmSignal
-import time
-import threading
+from .BeatDetectionThread import bpmSignal
 
 class BeatDetectionDebug:
     def start(self):
