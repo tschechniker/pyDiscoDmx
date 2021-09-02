@@ -3,7 +3,7 @@
 from .BeatDetectionThread import BeatDetectionThread
 from .BeatDetectionDebug import BeatDetectionDebug
 from PyDMXControl.controllers import uDMXController
-from .ChaseHandler import ChaseHandler
+from .EffectHandler import EffectHandler
 from queue import Queue
 import os
 import time
@@ -17,7 +17,7 @@ def main():
     dmx = uDMXController()
     dmx.json.load_config(globalConfig['dmx']['fixturesConfig'])
 
-    chaseHandler = ChaseHandler(globalConfig['chases'], dmx)
+    effectHandler = EffectHandler(globalConfig['effects'], dmx)
 
     beatThread = BeatDetectionThread()
     beatThread.start()
@@ -27,7 +27,7 @@ def main():
         debug.start()
 
     # @ToDo: Make this dynamic
-    chaseHandler.start("color")
+    effectHandler.start("color")
 
     dmx.sleep_till_interrupt()
 
